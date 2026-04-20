@@ -1,0 +1,9 @@
+timestamp,action,symbol,quantity,price,notes
+2026-04-14T15:31:00,buy,SPY,10,510.25,seed_demo
+2026-04-14T15:45:00,buy,QQQ,8,430.10,seed_demo
+2026-04-15T10:10:00,sell,SPY,5,513.90,seed_demo
+2026-04-15T14:20:00,buy,IWM,20,205.40,seed_demo
+2026-04-16T11:05:00,sell,QQQ,4,434.50,seed_demo
+2026-04-16T15:10:00,buy,XLE,15,98.30,seed_demo
+2026-04-17T09:40:00,sell,IWM,10,207.00,seed_demo
+2026-04-17T13:55:00,buy,GLD,6,221.75,seed_demo

@@ -1,0 +1,6 @@
+# .gitignore
+data/*.db
+output/*.txt
+archive/*.parquet
+__pycache__/
+.env
