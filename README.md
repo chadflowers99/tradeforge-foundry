@@ -1,6 +1,6 @@
 # TradeForge Foundry
 
-A modular Python suite for trade lifecycle management with deterministic maintenance tasks.
+Deterministic infrastructure for systematic trading. Features include Medallion-style data layers (Bronze/Silver), forensic audit logging, and automated backtest data hygiene.
 
 ## Included scripts
 
