@@ -1,4 +1,4 @@
-# TradeForge Foundry V2
+# TradeForge Foundry
 ### Systematic Trading Infrastructure | Medallion Architecture
 
 A high-fidelity pipeline designed for systematic trading, built with a focus on **Deterministic Data Hygiene** and **Forensic Auditability**.
