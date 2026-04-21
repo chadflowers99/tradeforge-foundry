@@ -1,4 +1,20 @@
-# TradeForge Foundry
+# TradeForge Foundry V2
+### Systematic Trading Infrastructure | Medallion Architecture
+
+A high-fidelity pipeline designed for systematic trading, built with a focus on **Deterministic Data Hygiene** and **Forensic Auditability**.
+
+## 🏗️ Architecture: The Medallion Flow
+This project utilizes a **Medallion Architecture** to ensure data integrity from ingestion to backtest:
+* **Bronze Layer (Raw):** Suppressor-aware ingestion of noisy, multi-format market data.
+* **Silver Layer (Cleansed):** Deterministic normalization and SHA-256 deduplication for zero-loss integrity.
+* **Gold Layer (Trade-Ready):** Forensic audit logs and manifest reporting for high-confidence backtesting.
+
+## 🛠️ Key Features
+* **Deterministic Transforms:** Eliminates variance in symbol normalization and action mapping.
+* **Forensic Auditing:** Automated logging of every ingestion batch with "Diagnostic Checkpoints."
+* **Zero-Loss Deduplication:** Canonical row hashing ensures backtest data remains pristine.
+
+---
 
 Deterministic infrastructure for systematic trading. Features include Medallion-style data layers (Bronze/Silver), forensic audit logging, and automated backtest data hygiene.
 
