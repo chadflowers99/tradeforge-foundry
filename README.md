@@ -132,8 +132,23 @@ python run_toolbox.py metrics
 - check-integrity prints the last 5 ingest runs and recent rejection reasons for fast diagnosis.
 - If data/stock_trades.db does not exist, launching the GUI will initialize the required tables.
 
-## Scheduling guidance
+## State-Driven Orchestration
 
-- Recommended production mode: hybrid.
-- Market-close automation: schedule ingest, integrity check, recalc, and archive after close.
-- Human-in-the-loop safeguard: review check-integrity output and rejection reasons before publishing reports.
+TradeForge Foundry utilizes a state-driven orchestration agent to ensure post-market activities are predictable, auditable, and resilient. Each run follows a rigorous lifecycle:
+
+* **S0 (Idle):** Awaiting the market-close trigger.
+* **S1 (Ingestion):** Data landing into the **Bronze Layer**.
+* **S2 (Integrity Checks):** High-fidelity gating via **Data Health Scoring**.
+* **S3 (Recalculation):** FIFO P/L and portfolio state updates in the **Silver Layer**.
+* **S4 (Archival):** Generation of timestamped **Parquet Research Snapshots** (Gold Layer).
+	* *Silent Logging:* Minor archival anomalies are logged to the manifest without halting the run.
+	* *Escalation:* Critical failures (e.g., disk full, locked DB) halt the pipeline and trigger **S5**.
+* **S5 (SWARNHUMAN_REVIEW):** An operational circuit breaker triggered by low health scores (<30%) or critical failures, requiring manual forensic review.
+
+## Scheduling Guidance (Chicago Operations)
+
+The recommended production mode is **Hybrid Automation**, optimized for the Chicago market close:
+
+1.  **Automation (Post-Market):** Schedule a daily trigger (e.g., 3:45 PM CST) to execute states **S1 through S4**.
+2.  **Human-in-the-Loop:** A daily review of the **Data Health Score** and the **S4 Archival Manifest** is recommended before publishing final reports.
+3.  **Circuit Breaker:** If the agent enters state **S5**, use the `check-integrity` command to diagnose rejection reasons before resuming automation.
